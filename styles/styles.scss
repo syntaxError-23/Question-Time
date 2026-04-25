@@ -1,3 +1,69 @@
-h1{
-    color: red
+// -------------------- MODULES --------------------
+@use "./mixin.scss";
+// -------------------- GLOBAL STYLES --------------------
+*{
+    // outline: 1px solid #ff0000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+html{
+ height: 100vh;
+}
+
+body{
+    @include mixin.page-bg;
+}
+// -------------------- LOGO SECTION STYLES --------------------
+
+.logo-section{
+    height: 10%;
+    width: 99.9%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    color: white;
+
+    &__presents{
+        margin-right: 5px;
+    }
+}
+
+// -------------------- USER GUIDANCE STYLES --------------------
+
+    .user-guidance{
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+// -------------------- GAME AREA STYLES --------------------
+.game-area{
+    
+    &__choices-container{
+        display: grid;
+        grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+        background-color: rgba(7, 7, 238, 0.5);
+        width: 80vw;
+        height: 60vh;
+        margin: 0 auto;
+
+        &__choices-grid-item:nth-child(odd){
+            background-color: rgba(252, 3, 3, 0.5);
+        }
+
+        &__choices-grid-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+    }
+}
+

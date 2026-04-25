@@ -1,0 +1,35 @@
+// -------------------- VARIABLES --------------------
+
+//---------- SCREEN SIZE VARIABLES ----------
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+
+
+
+@mixin sm-screen{
+    @media only screen and (max-width:$sm){
+        @content;
+    }
+}
+
+
+@mixin lg-screen{
+     @media only screen and (min-width:calc($md + 1px))
+     {
+        @content;
+    }
+}
+
+// ----------- MIXINS - REOCCURRING STYLES ----------
+
+// ----------- BODY ----------
+@mixin page-bg{
+    height: 100%;
+    background-image: url('../assets/mesh-bg-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
