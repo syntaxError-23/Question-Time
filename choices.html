@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Time</title>
+    <link rel="stylesheet" href="styles/choices.css">
+</head>
+<body>
+    <section class="logo-section">
+        <p class="logo-section__presents" >SE23 Presents</p>
+        <h1 class="logo-section__logo" >QUESTION TIME</h1>
+    </section>
+
+    
+
+    <main class="game-area ">
+        <section id="choices" class="game-area__choices-area-wrapper">
+            <p class="user-guidance">Select a box</p>
+
+            <article class="game-area__choices-container">
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="1">100 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="2">100 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="3">100 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="4">200 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="5">200 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="6">200 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="7">300 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="8">300 POINTS</div>
+                <div class="game-area__choices-container__choices-grid-item grid-item" tabindex="0" id="9">300 POINTS</div>
+            </article>       
+
+            <button id="confirmChoicebtn" class="game-area__confirm-btn">CONFIRM</button>
+        </section>
+
+        <section id="question" class="question-area-wrapper hide">
+
+            <div class="question-area-wrapper__question-container">
+
+                <div class="question-area-wrapper__question">
+                    <p id="qText" class="question-area-wrapper__question-text"></p>
+                </div>
+
+                <div class="question-area-wrapper__answers">
+                    <p class="question-area-wrapper__answer-text"></p>
+                    <p class="question-area-wrapper__answer-text"></p>
+                    <p class="question-area-wrapper__answer-text"></p>
+                    <p class="question-area-wrapper__answer-text"></p>
+                </div>
+
+                <button id="confirmAnsBtn" class="game-area__confirm-ans-btn">CONFIRM</button>
+            </div>
+        </section>
+    </main>
+
+
+
+
+</body>
+<script type="module" src="./scripts/choices.js"></script>
+</html>
+

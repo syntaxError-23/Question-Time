@@ -116,15 +116,27 @@ export const questionsArr = [
 // Question at x: console.log(questionsArr[x][0])
 // Points for question x:  console.log[x][1]
 
+export const questionsObjArr = [];
 
-export const logQuestion = (question) => {
-    console.log(
-    `Question: ${questionsArr[question][0]}
-    Points: ${questionsArr[question][1]}
-    Answer: ${questionsArr[question][2][0]} 
-    All answers: ${questionsArr[question][2]}`)
+function QuestionObj(question, points, correctAns, ans2, ans3, ans4){
+    this.question = question;
+    this.points = points;
+    this.correctAns = correctAns;
+    this.ans2 = ans2;
+    this.ans3 = ans3;
+    this.ans4 = ans4;
 }
 
+questionsArr.forEach((qArr, index) => {
+    const questionInst = new QuestionObj(qArr[0], qArr[1], qArr[2][0], qArr[2][1], qArr[2][2], qArr[2][3]);
+    questionsObjArr.push(questionInst)
 
+})
 
-
+export const logQuestion = (arr, index) => {
+    console.log(
+    `Question: ${arr[index].question}
+Points: ${arr[index].points}
+Answer: ${arr[index].correctAns} 
+All answers: ${arr[index].ans2}, ${arr[index].ans3} ${arr[index].ans4}`)
+}

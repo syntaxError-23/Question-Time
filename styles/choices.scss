@@ -1,0 +1,132 @@
+// -------------------- MODULES --------------------
+@use "./mixin.scss";
+// -------------------- GLOBAL STYLES --------------------
+*{
+    // outline: 1px solid #ff0000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+ height: 100vh;
+}
+
+body{
+    @include mixin.page-bg;
+}
+
+// -------------------- LOGO SECTION STYLES --------------------
+
+.logo-section{
+    height: 10%;
+    width: 99.9%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    color: white;
+
+    &__presents{
+        margin-right: 5px;
+    }
+}
+
+// -------------------- USER GUIDANCE STYLES --------------------
+
+    .user-guidance{
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+// -------------------- GAME AREA STYLES --------------------
+.game-area{
+    height: 80%;
+
+    // ---------- CHOICES GRID STYLES ----------
+
+    &__choices-area-wrapper{
+        @include mixin.section-styles;
+    }
+    
+    &__choices-container{
+        display: grid;
+        grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+        width: 80vw;
+        height: 60%;
+        margin: 0 auto;
+        row-gap: 5px;
+        column-gap: 5px;
+        
+        &__choices-grid-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 43, 0.35);
+            transition: border 0.2s ease-out, background-color 0.2s ease-out;
+
+             &:hover{
+                border: 1px solid white;
+                cursor: pointer;
+             }
+
+             &:focus{
+                background-color: rgba(148, 3, 252, 0.3);
+             }
+        }
+    }
+
+    &__confirm-btn{
+        @include mixin.btn-styles;
+
+        &:hover{
+            @include mixin.btn-hover-styles;
+        }
+    }
+
+    &__confirm-ans-btn{
+        @include mixin.btn-styles;
+        
+        &:hover{
+            @include mixin.btn-hover-styles;
+        }
+    }
+}
+
+    // ---------- GAME AREA STYLES ----------
+
+    .question-area-wrapper{
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &__question-container{
+            @include mixin.section-styles;
+        }
+
+        &__question{
+            background-color: rgba($color: #000000, $alpha: 0.4);
+            border-radius: 5px;
+            padding: 25px 40px;
+            width: 75%;
+        }
+
+        &__question-text{
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    }
+
+// -------------------- TOGGLE STYLES --------------------
+.hide{
+    display: none;
+}

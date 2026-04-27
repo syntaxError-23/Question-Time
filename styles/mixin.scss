@@ -26,10 +26,33 @@ $lg: 1024px;
 // ----------- BODY ----------
 @mixin page-bg{
     height: 100%;
-    background-image: url('../assets/mesh-bg-2.png');
+    background-image: url('../assets/mesh-bg-3.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     overflow: hidden;
+}
+
+@mixin btn-styles{
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    background-color: rgba($color: #01672d04, $alpha: 0.5);
+}
+
+@mixin btn-hover-styles{
+    background-color: rgba($color: #01672d04, $alpha: 0.8);
+    cursor: pointer;
+}
+
+@mixin section-styles{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
 }
