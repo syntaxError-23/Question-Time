@@ -1,21 +1,27 @@
 // -------------------- IMPORTS -------------------- 
 import {logQuestion, questionsObjArr} from './questions.js';
 // -------------------- DOM VARIABLES -------------------- 
-const gridItems = document.getElementsByClassName('grid-item');
+const gridItems = document.querySelectorAll('.grid-item');
 const confirmChoiceBtn = document.getElementById('confirmChoicebtn');
 const confirmAnsBtn = document.getElementById('confirmAnsBtn');
 const choicesArea = document.getElementById('choices');
 const questionsArea = document.getElementById('question');
 const questionText = document.getElementById('qText');
 const answerOptions = document.querySelectorAll('.aText');
-const qBoxes = document.querySelectorAll('.grid-item')
 const nextQuesBtn = document.getElementById('nextQuesBtn');
+const pointsThisQues = document.getElementById('pointsThisQues');
+const scoreboard = document.getElementById('scoreboard');
+const endModal = document.getElementById('modal')
+const newGameBtn = document.getElementById('newGameBtn');
+const homeBtn = document.getElementById('homeBtn');
+const modalScore = document.getElementById('modalScore');
 // -------------------- VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
-let clickedBox = ''; //question box clicked by user
 let currentQuestionIndex //Will hold the index of the selected grid item
 let questionList = []; //Will hold a randomly generated set of questions corresponding to the number of grid items
+let roundCounter = 0;
+
 // -------------------- FUNCTIONS -------------------- 
 
 //Generates random list of questions
@@ -57,12 +63,39 @@ const shuffle = qObj => {
 // Adds an event listener to each grid item and stores respective ids in a variable to later be used as indices
 const handleGridClick = e =>{
        currentQuestionIndex = parseInt(e.target.id)-1;
-       console.log(`${currentQuestionIndex} clicked`)
     }
 
-for(const item of gridItems){
+gridItems.forEach(item => {
     item.addEventListener('click', handleGridClick)
-}
+})
+
+gridItems.forEach(item => {
+    item.addEventListener('click', e => {
+        item.classList.add('selected-grid-item');
+
+        gridItems.forEach(gridItem => {
+            if(e.target !== gridItem){
+                gridItem.classList.remove('selected-grid-item');
+            }
+        })
+    })
+})
+
+//loops through answers and adds event listeners (for appropriate styling when clicked - alternative to focus)
+answerOptions.forEach(option => {
+    option.addEventListener('click', e => {
+        option.classList.add('selected-answer');
+        //checks if selected answer matches current answer and removes highlighting if not
+        answerOptions.forEach(ans => {
+            if(e.target !== ans){
+                ans.classList.remove('selected-answer');
+            }
+        })
+    })
+})
+
+
+
 //Event listener for confirm button in choices section
 confirmChoiceBtn.addEventListener('click', () => {
     //checks if a question box is selected
@@ -71,6 +104,11 @@ confirmChoiceBtn.addEventListener('click', () => {
         let currentQuesObj = questionList[currentQuestionIndex]; //variable to store current question object using question box id as an index
         questionText.innerHTML = currentQuesObj.question;
 
+        //defaults to non-highlighted answer styles at first instance
+        answerOptions.forEach(ans => {
+            ans.classList.remove('selected-answer');
+        })
+        
         let ansArr = shuffle(currentQuesObj); //shuffles potential answers
 
         //loops through node list of answers (p tags)
@@ -84,14 +122,26 @@ confirmChoiceBtn.addEventListener('click', () => {
 
         choicesArea.classList.toggle('hide'); //hides choices grid
         questionsArea.classList.toggle('hide'); //displays question section
+
+        pointsThisQues.textContent = `${currentQuesObj.points} points`; //update points display
+
     }
     else{
         alert('Please select an option'); //alerts user if no question box is selected
     }
+
+    
 })
 
 //Event listener for confirm button in questions section
 confirmAnsBtn.addEventListener('click', () => {
+    
+    if(roundCounter === 4){
+        roundCounter = 0;
+        endModal.classList.toggle('hide');
+        modalScore.textContent = `You scored ${score} points`;
+    }
+    
     //checks if an option has been selected 
     if(clickedOption){
         let currentQuesObj = questionList[currentQuestionIndex] //for easier typing and reading - same as previous event listener
@@ -114,25 +164,31 @@ confirmAnsBtn.addEventListener('click', () => {
                 option.classList.add('incorrect-answer')
             }
         })
-        
-        console.log(`Score: ${score}`)
 
+        //Update scores
+        scoreboard.textContent = `SCORE: ${score}`;
+        
         confirmAnsBtn.classList.toggle('hide') //hides confirm button
         nextQuesBtn.classList.toggle('hide') //displays next question button
 
         gridItems[currentQuestionIndex].classList.add('completed');
         gridItems[currentQuestionIndex].removeEventListener('click', handleGridClick);
-
-        console.log(questionList)
-        
     }    
     else{
         alert('Please select an option');
     }
 })
 
+const reloadGame = () => {
+    window.location.reload()
+}
+newGameBtn.addEventListener('click', reloadGame);
+
 //Event listener for next question button in questions section
 nextQuesBtn.addEventListener('click', () => {
+    console.log(roundCounter)
+
+    
     let currentQuesObj = questionList[currentQuestionIndex] //same as previous event listeners
 
     choicesArea.classList.toggle('hide'); //shows choices grid
@@ -151,8 +207,13 @@ nextQuesBtn.addEventListener('click', () => {
             }
         })
 
+    //resets stored values for selected question and selected answer
     currentQuestionIndex = undefined;
     clickedOption = '';
+
+    pointsThisQues.textContent = 'SELECT A QUESTION';
+    roundCounter++ //
+    console.log(`Rounds: ${roundCounter}`)
 })
 
 

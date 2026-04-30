@@ -16,6 +16,59 @@ body{
     @include mixin.page-bg;
 }
 
+// -------------------- MODAL STYLES --------------------
+
+.modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content{
+        background-color: rgba($color: #4e1c1c, $alpha: 0.2);
+        width: 80%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 10px;
+
+    }
+
+    &__btn-container{
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__new-game-btn, &__home-btn{
+        @include mixin.btn-styles;
+
+        &:hover{
+            @include mixin.btn-hover-styles;
+        }
+    }
+
+
+    &__msg{
+        color: rgb(161, 18, 27);
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    &__score{
+        color: white;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    
+}
+
+
 // -------------------- LOGO SECTION STYLES --------------------
 
 .logo-section{
@@ -34,14 +87,30 @@ body{
     }
 }
 
-// -------------------- USER GUIDANCE STYLES --------------------
+// -------------------- SCORES SECTION STYLES --------------------
 
-    .user-guidance{
-        color: white;
-        font-size: 2rem;
-        text-align: center;
-        margin-top: 50px;
+.scores{
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 45px;
+
+    &__scoreboard{
+        font-size: 1.5rem;
+        background-color: rgba($color: #f9f9f9, $alpha: 0.3);
+        padding: 5px 10px;
+        border-radius: 5px;
     }
+
+    &__points-this-ques{
+        font-size: 1.5rem;
+        color: rgb(222, 238, 252);
+    }
+}
+
 
 // -------------------- GAME AREA STYLES --------------------
 .game-area{
@@ -59,7 +128,7 @@ body{
         transition: 0.5s;
         display: grid;
         grid-template: repeat(3, 1fr)/repeat(3, 1fr);
-        width: 80vw;
+        width: 80%;
         height: 60%;
         margin: 0 auto;
         row-gap: 5px;
@@ -74,16 +143,16 @@ body{
             color: white;
             text-align: center;
             background-color: rgba(0, 0, 43, 0.35);
-            transition: border 0.2s ease-out, background-color 0.2s ease-out;
+            transition: background-color 0.2s ease-out;
 
              &:hover{
                 background-color: rgba(61, 1, 104, 0.3);
                 cursor: pointer;
              }
 
-             &:focus{
-                background-color: rgba(148, 3, 252, 0.4);
-             }
+            //  &:focus{
+            //     background-color: rgba(148, 3, 252, 0.4);
+            //  }
         }
     }
 
@@ -170,10 +239,6 @@ body{
                 background-color: rgba($color: #00fbff, $alpha: 0.3);
                 cursor: pointer;
             }
-
-            &:focus{
-                background-color: rgba($color: #00fbff, $alpha: 0.3);
-            }
         }
     }
 
@@ -182,6 +247,14 @@ body{
     display: none;
     opacity: 0%;
 } 
+
+.selected-answer{
+    background-color: rgba($color: #00fbff, $alpha: 0.3);
+}
+
+.selected-grid-item, .selected-grid-item:hover{
+    background-color: rgba(148, 3, 252, 0.4);
+}
 
 .correct-answer, .correct-answer:hover, .correct-answer:focus{
     background-color: rgba($color: #019915, $alpha: 0.6);
