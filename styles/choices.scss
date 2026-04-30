@@ -54,6 +54,9 @@ body{
     }
     
     &__choices-container{
+        opacity: 100%;
+        transition: opacity 0.5s ease-out;
+        transition: 0.5s;
         display: grid;
         grid-template: repeat(3, 1fr)/repeat(3, 1fr);
         width: 80vw;
@@ -61,6 +64,7 @@ body{
         margin: 0 auto;
         row-gap: 5px;
         column-gap: 5px;
+        
         
         &__choices-grid-item{
             display: flex;
@@ -117,6 +121,9 @@ body{
     // ---------- GAME AREA STYLES ----------
 
     .question-area-wrapper{
+        opacity: 100%;
+        transition: opacity 0.15s ease-out;
+        transition-delay: 0.5s;
         height: 90%;
         display: flex;
         flex-direction: column;
@@ -173,6 +180,7 @@ body{
 // -------------------- DYNAMICALLY ADDED STYLES --------------------
 .hide{
     display: none;
+    opacity: 0%;
 } 
 
 .correct-answer, .correct-answer:hover, .correct-answer:focus{
@@ -180,9 +188,13 @@ body{
     cursor: default;
 }
 
-
-
 .incorrect-answer, .incorrect-answer:hover, .incorrect-answer:focus{
     background-color: rgba($color: #990101, $alpha: 0.6);
     cursor: default;
+}
+
+.completed, .completed:hover, .completed:focus{
+    background-color: rgba($color: #2d2c2c, $alpha: 0.4);
+    cursor: default;
+    text-decoration: line-through;
 }

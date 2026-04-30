@@ -51,6 +51,9 @@ body {
   align-items: center;
 }
 .game-area__choices-container {
+  opacity: 100%;
+  transition: opacity 0.5s ease-out;
+  transition: 0.5s;
   display: grid;
   grid-template: repeat(3, 1fr)/repeat(3, 1fr);
   width: 80vw;
@@ -122,6 +125,9 @@ body {
 }
 
 .question-area-wrapper {
+  opacity: 100%;
+  transition: opacity 0.15s ease-out;
+  transition-delay: 0.5s;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -173,6 +179,7 @@ body {
 
 .hide {
   display: none;
+  opacity: 0%;
 }
 
 .correct-answer, .correct-answer:hover, .correct-answer:focus {
@@ -183,4 +190,10 @@ body {
 .incorrect-answer, .incorrect-answer:hover, .incorrect-answer:focus {
   background-color: rgba(153, 1, 1, 0.6);
   cursor: default;
+}
+
+.completed, .completed:hover, .completed:focus {
+  background-color: rgba(45, 44, 44, 0.4);
+  cursor: default;
+  text-decoration: line-through;
 }
