@@ -125,6 +125,8 @@ function QuestionObj(question, points, correctAns, ans2, ans3, ans4){
     this.ans2 = ans2;
     this.ans3 = ans3;
     this.ans4 = ans4;
+    this.allAns = [this.correctAns, this.ans2, this.ans3, this.ans4];
+
 }
 
 questionsArr.forEach((qArr, index) => {
@@ -135,7 +137,7 @@ questionsArr.forEach((qArr, index) => {
 
 export const logQuestion = (arr, index) => {
     console.log(
-    `Question: ${arr[index].question}
+`Question: ${arr[index].question}
 Points: ${arr[index].points}
 Answer: ${arr[index].correctAns} 
 All answers: ${arr[index].ans2}, ${arr[index].ans3} ${arr[index].ans4}`)

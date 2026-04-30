@@ -8,16 +8,10 @@ const confirmAnsBtn = document.getElementById('confirmAnsBtn');
 const choicesArea = document.getElementById('choices');
 const questionsArea = document.getElementById('question');
 const questionText = document.getElementById('qText');
+const answerOptions = document.querySelectorAll('.aText');
 
 // -------------------- VARIABLES -------------------- 
-
-const randomQuestion = Math.floor(Math.random()*100);
-const randomEasyQuestion = Math.floor(Math.random()*26);
-const randomMediumQuestion = Math.floor(Math.random()*38) + 26;
-const randomHardQuestion = Math.floor(Math.random()*35) + 64;
-
-
-
+let score = 0;
 // -------------------- FUNCTIONS -------------------- 
 
 const questionList = [];
@@ -40,34 +34,64 @@ const generateQuestionList = (arr, qArr) => {
 }
 
 generateQuestionList(questionsObjArr, questionList)
+console.log(questionList)
+
+const shuffle = qObj => {
+    let shuffledAnsArr = [...qObj.allAns]
+
+    for(let i=0; i<shuffledAnsArr.length; i++){
+        let temp = shuffledAnsArr[i]; //grab current item
+        let randomIndex = Math.floor(Math.random()* shuffledAnsArr.length);  //generate random number
+        shuffledAnsArr[i] = shuffledAnsArr[randomIndex] //switch current item with random item
+        shuffledAnsArr[randomIndex] = temp //switches temporarily held value for random index value
+    }
+    return shuffledAnsArr;
+}
 
 
 // -------------------- MAIN PROGRAM -------------------- 
-
-
 let currentQuestionIndex;
 
 for(const item of gridItem){
     item.addEventListener('click', e =>{
        currentQuestionIndex = parseInt(e.target.id)-1;
-       console.log(currentQuestionIndex)
-       logQuestion(questionList, currentQuestionIndex)
     })
 }
 
+let clickedOption = ''
 
 confirmChoiceBtn.addEventListener('click', () => {
-    if(currentQuestionIndex){
-        
-        questionText.innerHTML = questionList[currentQuestionIndex].question;
+    if(currentQuestionIndex){ 
+        let currentQuesObj = questionList[currentQuestionIndex];
+        questionText.innerHTML = currentQuesObj.question;
+
+        let ansArr = shuffle(currentQuesObj);
+
+        answerOptions.forEach((option, index) => {
+            option.textContent = ansArr[index]
+
+            option.addEventListener('click', () => {
+                clickedOption = option.textContent;
+            })
+        })
 
         choicesArea.classList.toggle('hide');
         questionsArea.classList.toggle('hide');
-
     }
 })
 
 confirmAnsBtn.addEventListener('click', () => {
+        let currentQuesObj = questionList[currentQuestionIndex]
+
+        if(clickedOption === currentQuesObj.correctAns){
+            console.log('Right Answer!')
+            score = score+=currentQuesObj.points
+        }
+        else {
+            console.log('Unlucky. Try again')
+        }
+        
+        console.log(`Score: ${score}`)
         choicesArea.classList.toggle('hide');
         questionsArea.classList.toggle('hide');
 

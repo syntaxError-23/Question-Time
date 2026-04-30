@@ -70,11 +70,11 @@ body {
   transition: border 0.2s ease-out, background-color 0.2s ease-out;
 }
 .game-area__choices-container__choices-grid-item:hover {
-  border: 1px solid white;
+  background-color: rgba(61, 1, 104, 0.3);
   cursor: pointer;
 }
 .game-area__choices-container__choices-grid-item:focus {
-  background-color: rgba(148, 3, 252, 0.3);
+  background-color: rgba(148, 3, 252, 0.4);
 }
 .game-area__confirm-btn {
   padding: 12px 15px;
@@ -86,7 +86,7 @@ body {
   background-color: rgba(1, 103, 45, 0.5);
 }
 .game-area__confirm-btn:hover {
-  background-color: rgba(1, 103, 45, 0.8);
+  background-color: rgba(2, 139, 61, 0.8);
   cursor: pointer;
 }
 .game-area__confirm-ans-btn {
@@ -99,7 +99,7 @@ body {
   background-color: rgba(1, 103, 45, 0.5);
 }
 .game-area__confirm-ans-btn:hover {
-  background-color: rgba(1, 103, 45, 0.8);
+  background-color: rgba(2, 139, 61, 0.8);
   cursor: pointer;
 }
 
@@ -117,7 +117,7 @@ body {
   align-items: center;
 }
 .question-area-wrapper__question {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(3, 0, 60, 0.3);
   border-radius: 5px;
   padding: 25px 40px;
   width: 75%;
@@ -126,6 +126,31 @@ body {
   color: white;
   text-align: center;
   font-size: 1.5rem;
+}
+.question-area-wrapper__answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50%;
+  width: 80%;
+}
+.question-area-wrapper__answer-text {
+  background-color: rgba(5, 119, 121, 0.3);
+  border-radius: 5px;
+  padding: 15px 30px;
+  width: 75%;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: background-color 0.25s ease-out;
+}
+.question-area-wrapper__answer-text:hover {
+  background-color: rgba(0, 251, 255, 0.3);
+  cursor: pointer;
+}
+.question-area-wrapper__answer-text:focus {
+  background-color: rgba(0, 251, 255, 0.3);
 }
 
 .hide {

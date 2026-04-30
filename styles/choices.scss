@@ -73,12 +73,12 @@ body{
             transition: border 0.2s ease-out, background-color 0.2s ease-out;
 
              &:hover{
-                border: 1px solid white;
+                background-color: rgba(61, 1, 104, 0.3);
                 cursor: pointer;
              }
 
              &:focus{
-                background-color: rgba(148, 3, 252, 0.3);
+                background-color: rgba(148, 3, 252, 0.4);
              }
         }
     }
@@ -113,7 +113,7 @@ body{
         }
 
         &__question{
-            background-color: rgba($color: #000000, $alpha: 0.4);
+            background-color: rgba($color: #03003c, $alpha: 0.3);
             border-radius: 5px;
             padding: 25px 40px;
             width: 75%;
@@ -123,6 +123,36 @@ body{
             color: white;
             text-align: center;
             font-size: 1.5rem;
+        }
+
+        &__answers{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 50%;
+            width: 80%;
+        
+        }
+
+        &__answer-text{
+            background-color: rgba($color: #057779, $alpha: 0.3);
+            border-radius: 5px;
+            padding: 15px 30px;
+            width: 75%;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            transition: background-color 0.25s ease-out;
+
+            &:hover{
+                background-color: rgba($color: #00fbff, $alpha: 0.3);
+                cursor: pointer;
+            }
+
+            &:focus{
+                background-color: rgba($color: #00fbff, $alpha: 0.3);
+            }
         }
     }
 
