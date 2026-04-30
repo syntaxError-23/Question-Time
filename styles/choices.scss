@@ -91,6 +91,20 @@ body{
         }
     }
 
+      &__btns-container{
+        display: flex;
+        width: 50%;
+        justify-content: space-around;
+    }
+
+    &__next-ques-btn{
+        @include mixin.btn-styles(rgba($color: #014d70, $alpha: 0.4));
+
+        &:hover{
+            @include mixin.btn-hover-styles(rgba($color: #029ce3, $alpha: 0.4))
+        }
+    }
+
     &__confirm-ans-btn{
         @include mixin.btn-styles;
         
@@ -156,7 +170,19 @@ body{
         }
     }
 
-// -------------------- TOGGLE STYLES --------------------
+// -------------------- DYNAMICALLY ADDED STYLES --------------------
 .hide{
     display: none;
+} 
+
+.correct-answer, .correct-answer:hover, .correct-answer:focus{
+    background-color: rgba($color: #019915, $alpha: 0.6);
+    cursor: default;
+}
+
+
+
+.incorrect-answer, .incorrect-answer:hover, .incorrect-answer:focus{
+    background-color: rgba($color: #990101, $alpha: 0.6);
+    cursor: default;
 }

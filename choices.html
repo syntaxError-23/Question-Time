@@ -16,6 +16,8 @@
 
     <main class="game-area ">
         <section id="choices" class="game-area__choices-area-wrapper">
+            <!-- ---------- CHOICES GRID   ---------- -->
+            
             <p class="user-guidance">Select a box</p>
 
             <article class="game-area__choices-container">
@@ -33,6 +35,8 @@
             <button id="confirmChoicebtn" class="game-area__confirm-btn">CONFIRM</button>
         </section>
 
+        <!-- ---------- QUESTIONS AND ANSWERS   ---------- -->
+
         <section id="question" class="question-area-wrapper hide">
 
             <div class="question-area-wrapper__question-container">
@@ -48,7 +52,11 @@
                     <p class="question-area-wrapper__answer-text aText" tabindex="0" ></p>
                 </div>
 
-                <button id="confirmAnsBtn" class="game-area__confirm-ans-btn">CONFIRM</button>
+                <div class="game-area__btns-container">
+                    <button id="confirmAnsBtn" class="game-area__confirm-ans-btn">CONFIRM</button>
+                    <button class="game-area__next-ques-btn hide" id="nextQuesBtn">NEXT QUESTION</button>
+                </div>
+
             </div>
         </section>
     </main>

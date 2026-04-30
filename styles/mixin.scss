@@ -34,18 +34,18 @@ $lg: 1024px;
     overflow: hidden;
 }
 
-@mixin btn-styles{
+@mixin btn-styles($btn-bg: rgba($color: #01672d04, $alpha: 0.5)){
     padding: 12px 15px;
     text-decoration: none;
     color: white;
     border: none;
     border-radius: 5px;
     transition: background-color 0.2s;
-    background-color: rgba($color: #01672d04, $alpha: 0.5);
+    background-color: $btn-bg;
 }
 
-@mixin btn-hover-styles{
-    background-color: rgba($color: #028b3d04, $alpha: 0.8);
+@mixin btn-hover-styles($btn-hover-bg: rgba($color: #028b3d04, $alpha: 0.8)){
+    background-color: $btn-hover-bg;
     cursor: pointer;
 }
 

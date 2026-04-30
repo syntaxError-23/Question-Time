@@ -44,7 +44,7 @@ A trivia game that can be played either solo or with another player. It features
 - [x] Confirm button triggers question to appear and choices grid to disappear
 - [x] Question that appears corresponds to grid item clicked
 - [ ] Correct question is highlighted when confirmed
-- [ ] Grid reappears when next question button is clicked
+- [x] Grid reappears when next question button is clicked
 - [ ] Grid item that corresponds to previously selected question(s) is unavailable
 ##### Bonus
 - [ ] Multiplier applied for consecutive correct questions

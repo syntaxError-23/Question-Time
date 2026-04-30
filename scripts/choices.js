@@ -1,5 +1,5 @@
 // -------------------- IMPORTS -------------------- 
-import {questionsArr, logQuestion, questionsObjArr} from './questions.js';
+import {logQuestion, questionsObjArr} from './questions.js';
 
 // -------------------- DOM VARIABLES -------------------- 
 const gridItem = document.getElementsByClassName('grid-item');
@@ -10,7 +10,7 @@ const questionsArea = document.getElementById('question');
 const questionText = document.getElementById('qText');
 const answerOptions = document.querySelectorAll('.aText');
 const qBoxes = document.querySelectorAll('.grid-item')
-
+const nextQuesBtn = document.getElementById('nextQuesBtn');
 // -------------------- VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
@@ -101,15 +101,45 @@ confirmAnsBtn.addEventListener('click', () => {
         else {
             console.log('Unlucky. Try again')
         }
+
+        answerOptions.forEach(option => {
+            if(option.textContent === currentQuesObj.correctAns){
+                option.classList.add('correct-answer')
+            }
+            else{
+                option.classList.add('incorrect-answer')
+            }
+        })
         
         console.log(`Score: ${score}`)
-        choicesArea.classList.toggle('hide');
-        questionsArea.classList.toggle('hide');
+
+        confirmAnsBtn.classList.toggle('hide')
+        nextQuesBtn.classList.toggle('hide')
     }    
-        
     else{
         alert('Please select an option');
     }
+
+
+})
+
+nextQuesBtn.addEventListener('click', () => {
+    let currentQuesObj = questionList[currentQuestionIndex]
+
+    choicesArea.classList.toggle('hide');
+    questionsArea.classList.toggle('hide');
+
+    nextQuesBtn.classList.toggle('hide')
+    confirmAnsBtn.classList.toggle('hide')
+
+    answerOptions.forEach(option => {
+            if(option.textContent === currentQuesObj.correctAns){
+                option.classList.remove('correct-answer')
+            }
+            else{
+                option.classList.remove('incorrect-answer')
+            }
+        })
 })
 
 

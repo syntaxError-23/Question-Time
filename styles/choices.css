@@ -89,6 +89,24 @@ body {
   background-color: rgba(2, 139, 61, 0.8);
   cursor: pointer;
 }
+.game-area__btns-container {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+}
+.game-area__next-ques-btn {
+  padding: 12px 15px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  background-color: rgba(1, 77, 112, 0.4);
+}
+.game-area__next-ques-btn:hover {
+  background-color: rgba(2, 156, 227, 0.4);
+  cursor: pointer;
+}
 .game-area__confirm-ans-btn {
   padding: 12px 15px;
   text-decoration: none;
@@ -155,4 +173,14 @@ body {
 
 .hide {
   display: none;
+}
+
+.correct-answer, .correct-answer:hover, .correct-answer:focus {
+  background-color: rgba(1, 153, 21, 0.6);
+  cursor: default;
+}
+
+.incorrect-answer, .incorrect-answer:hover, .incorrect-answer:focus {
+  background-color: rgba(153, 1, 1, 0.6);
+  cursor: default;
 }
