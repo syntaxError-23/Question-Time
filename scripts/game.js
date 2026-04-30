@@ -184,6 +184,10 @@ const reloadGame = () => {
 }
 newGameBtn.addEventListener('click', reloadGame);
 
+homeBtn.addEventListener('click', () => {
+    window.location.replace('../index.html')
+})
+
 //Event listener for next question button in questions section
 nextQuesBtn.addEventListener('click', () => {
     console.log(roundCounter)

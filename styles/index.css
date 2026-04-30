@@ -1,0 +1,45 @@
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  background-image: url("../assets/mesh-bg-3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.logo-section {
+  height: 10%;
+  width: 99.9%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.how-to-play {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.how-to-play__start-solo-game {
+  padding: 12px 15px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  background-color: rgba(1, 103, 45, 0.5);
+}
+.how-to-play__start-solo-game:hover {
+  background-color: rgba(2, 139, 61, 0.8);
+  cursor: pointer;
+}

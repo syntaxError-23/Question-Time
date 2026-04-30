@@ -12,23 +12,24 @@ A trivia game that can be played either solo or with another player. It features
 ##### Game page
 - [x] Logo section
 	- [ ] text logo (designed logo if possible)
-- [ ] Scores section
-	- [ ] Scores display
-	- [ ] points on the line display
+- [x] Scores section
+	- [x] Scores display
+	- [x] points on the line display
 - [x] Choices grid
 	- [x] Grid of divs
 	- [x] confirm button
-- [ ] Question and answers
+- [x] Question and answers
 	- [x] div for question
 	- [x] div to hold div of answers
 	- [x] confirm button
-	- [ ] next question button
+	- [x] next question button
 #### CSS
+##### MVP
 - [x] Mesh background
 - [x] Dark theme
 ##### Mobile 
 - [x] Logo section - larger relative to viewport
-- [ ] Scores section - larger relative to viewport
+- [x] Scores section - larger relative to viewport
 - [x] Choices - 3x3 grid via css grid
 - [x] Question and answers - Flex column for both questions and answers
 ##### Desktop 
@@ -38,13 +39,15 @@ A trivia game that can be played either solo or with another player. It features
 - [ ] Question and answers - flex column for entire section and css grid for answers
 #### JS
 ##### MVP
-- [ ] Game runs for a set number of rounds
+- [x] Game runs for a set number of rounds
 - [x] Generate questions for grid
 - [x] Each grid item represents one question
 - [x] Confirm button triggers question to appear and choices grid to disappear
 - [x] Question that appears corresponds to grid item clicked
-- [ ] Correct question is highlighted when confirmed
+- [x] Correct question is highlighted when confirmed
 - [x] Grid reappears when next question button is clicked
-- [ ] Grid item that corresponds to previously selected question(s) is unavailable
+- [x] Grid item that corresponds to previously selected question(s) is unavailable
 ##### Bonus
 - [ ] Multiplier applied for consecutive correct questions
+- [ ] Use setTimeout to enable opacity effects to render
+- [ ] Save scores (local or cookies) and display highscore in modal

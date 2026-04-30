@@ -1,0 +1,35 @@
+// ---------- IMPORTS ----------
+@use './mixin.scss';
+
+// ---------- GLOBAL STYLES ----------
+html{
+    height: 100vh;
+}
+
+body{
+    @include mixin.page-bg;
+}
+
+// ---------- LOGO SECTION STYLES ----------
+.logo-section{
+    @include mixin.logo-section-styles;
+}
+
+.how-to-play{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__start-solo-game{
+        @include mixin.btn-styles;
+
+        &:hover{
+            @include mixin.btn-hover-styles;
+        }
+    }
+
+
+
+}
+
