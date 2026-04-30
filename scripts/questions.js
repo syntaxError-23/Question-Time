@@ -111,11 +111,6 @@ export const questionsArr = [
 
 
 // -------------- TEMPLATE CONSOLE LOGS --------------
-
-// Current length of Array: 99
-// Question at x: console.log(questionsArr[x][0])
-// Points for question x:  console.log[x][1]
-
 export const questionsObjArr = [];
 
 function QuestionObj(question, points, correctAns, ans2, ans3, ans4){
@@ -129,7 +124,7 @@ function QuestionObj(question, points, correctAns, ans2, ans3, ans4){
 
 }
 
-questionsArr.forEach((qArr, index) => {
+questionsArr.forEach(qArr => {
     const questionInst = new QuestionObj(qArr[0], qArr[1], qArr[2][0], qArr[2][1], qArr[2][2], qArr[2][3]);
     questionsObjArr.push(questionInst)
 

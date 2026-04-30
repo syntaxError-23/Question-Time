@@ -9,9 +9,12 @@ const choicesArea = document.getElementById('choices');
 const questionsArea = document.getElementById('question');
 const questionText = document.getElementById('qText');
 const answerOptions = document.querySelectorAll('.aText');
+const qBoxes = document.querySelectorAll('.grid-item')
 
 // -------------------- VARIABLES -------------------- 
-let score = 0;
+let score = 0; //stores user score
+let clickedOption = ''; //option (out of the possible answers) clicked by the user
+let clickedBox = ''; //question box clicked by user
 // -------------------- FUNCTIONS -------------------- 
 
 const questionList = [];
@@ -58,10 +61,14 @@ for(const item of gridItem){
     })
 }
 
-let clickedOption = ''
+qBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+        clickedBox = box.id
+    })
+})
 
 confirmChoiceBtn.addEventListener('click', () => {
-    if(currentQuestionIndex){ 
+    if(currentQuestionIndex && clickedBox){ 
         let currentQuesObj = questionList[currentQuestionIndex];
         questionText.innerHTML = currentQuesObj.question;
 
@@ -78,9 +85,13 @@ confirmChoiceBtn.addEventListener('click', () => {
         choicesArea.classList.toggle('hide');
         questionsArea.classList.toggle('hide');
     }
+    else{
+        alert('Please select an option');
+    }
 })
 
 confirmAnsBtn.addEventListener('click', () => {
+    if(clickedOption){
         let currentQuesObj = questionList[currentQuestionIndex]
 
         if(clickedOption === currentQuesObj.correctAns){
@@ -94,7 +105,11 @@ confirmAnsBtn.addEventListener('click', () => {
         console.log(`Score: ${score}`)
         choicesArea.classList.toggle('hide');
         questionsArea.classList.toggle('hide');
-
+    }    
+        
+    else{
+        alert('Please select an option');
+    }
 })
 
 
