@@ -21,6 +21,7 @@ body{
 // ---------- LOGO SECTION STYLES ----------
 .logo-section{
     @include mixin.logo-section-styles;
+    text-align: center;
     
     &__presents{
         @include mixin.presents-styles
@@ -47,7 +48,6 @@ body{
     
     &:hover{
         @include mixin.btn-hover-styles;
-
     }
 }
 
@@ -77,7 +77,7 @@ body{
         font-size: 0.8rem;
     }
 
-        // ----- INSTRUCTIONS DIV -----
+    // ----- INSTRUCTIONS DIV -----
     &__instructions{
         display: flex;
         justify-content: center;
