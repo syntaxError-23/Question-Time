@@ -2,34 +2,134 @@
 @use './mixin.scss';
 
 // ---------- GLOBAL STYLES ----------
+*{
+    // outline: 1px solid #ff0000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html{
     height: 100vh;
 }
 
 body{
     @include mixin.page-bg;
+    overflow: visible;
 }
 
 // ---------- LOGO SECTION STYLES ----------
 .logo-section{
     @include mixin.logo-section-styles;
+    
+    &__presents{
+        @include mixin.presents-styles
+
+    }
+
+    &__logo{
+        @include mixin.logo-styles
+    }
 }
+// ----- START BUTTON -----
+
+.game-btns{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.start-solo-game{
+    @include mixin.btn-styles;
+    font-size: 1.7rem;
+    font-weight: bold;
+    
+    &:hover{
+        @include mixin.btn-hover-styles;
+
+    }
+}
+
+// ---------- HOW TO PLAY SECTION STYLES ----------
 
 .how-to-play{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    text-align: center;
+    color: aliceblue;
 
-    &__start-solo-game{
-        @include mixin.btn-styles;
 
-        &:hover{
-            @include mixin.btn-hover-styles;
-        }
+    // ----- WELCOME DIV -----
+
+    &__welcome-container{
+        margin-top: 15px;
+        margin-bottom: 25px;
     }
 
+    &__welcome-heading{
+        font-size: 1.3rem;
+    }
 
+    &__intro{
+        font-size: 0.8rem;
+    }
 
+        // ----- INSTRUCTIONS DIV -----
+    &__instructions{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__instruction-heading{
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    &__quick-note{
+        margin-bottom: 30px;
+        font-size: 1.2rem;
+    }
+
+    &__instruction-cards-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__instruction-card{
+        background-color: rgba($color: #ea523e, $alpha: 0.12);
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+        height: 40%;
+        width: 90%;
+        margin-bottom: 20px;
+        padding: 20px 15px;
+        border-radius: 5px;
+    }
+
+    &__instruction-text{
+        font-size: 1.4rem;
+    }
+
+    &__instruction-visual-container{
+        width: 75%;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    &__instruction-visual{
+        max-width: 85%;
+        max-height: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
 }
 

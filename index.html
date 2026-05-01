@@ -8,14 +8,60 @@
 </head>
 <body>
     <section class="logo-section">
-        <p class="logo-section__presents" >SE23 Presents</p>
-        <h1 class="logo-section__logo" >QUESTION TIME</h1>
+            <p class="logo-section__presents" >SE23<br>Presents</p>
+            <h1 class="logo-section__logo" >QUESTION TIME</h1>
     </section>
+
+
 
     <section class="how-to-play">
 
-        <div class="how-to-play__game-btns">
-            <a href="./game.html" class="how-to-play__start-solo-game" id="startSoloGame">START GAME</a>
+        <!-- ---------- WELCOME ---------- -->
+        <div class="how-to-play__welcome-container">
+            <h2 class="how-to-play__welcome-heading">WELCOME TO QUESTION TIME</h2>
+            <p class="how-to-play__intro">TEST YOUR TRIVIA</p>
+        </div>
+
+        <div class="game-btns">
+            <a href="./game.html" class="start-solo-game" id="startSoloGame">START GAME</a>
+        </div>
+
+        <!-- ---------- INSTRUCTIONS ---------- -->
+        <div class="how-to-play__instructions">
+            <h3 class="how-to-play__instruction-heading">HOW TO PLAY</h3>
+            <p class="how-to-play__quick-note">Each game runs for 5 rounds. Each round is as follows</p>
+            
+            <!-- ---------- INSTRUCTION CARDS ---------- -->
+            <div class="how-to-play__instruction-cards-wrapper">
+            <!-- ----- CARD 1 ----- -->
+                <div class="how-to-play__instruction-card">
+                    <p class="how-to-play__instruction-text"> select a box and click the confirm button below</p>
+                    <div class="how-to-play__instuction-visual-container">
+                        <img src="./assets/grid-guide.png" alt="" class="how-to-play__instruction-visual">
+                    </div>
+                </div>
+            <!-- ----- CARD 2 ----- -->
+                <div class="how-to-play__instruction-card">
+                    <p class="how-to-play__instruction-text">Select your desired answer and lock it in with the confirm button</p>
+                    <div class="how-to-play__instuction-visual-container">
+                        <img src="./assets/question-guide-1.png" alt="" class="how-to-play__instruction-visual">
+                    </div>
+                </div>
+            <!-- ----- CARD 3 ----- -->
+                <div class="how-to-play__instruction-card">
+                    <p class="how-to-play__instruction-text">Once your ready for the next question, click the next question button</p>
+                    <div class="how-to-play__instuction-visual-container">
+                        <img src="./assets/question-guide-2.png" alt="" class="how-to-play__instruction-visual">
+                    </div>
+                </div>
+            <!-- ----- CARD 4 ----- -->
+                <div class="how-to-play__instruction-card">
+                    <p class="how-to-play__instruction-text">You will be returned to the grid and can select your next question</p>
+                    <div class="how-to-play__instuction-visual-container">
+                        <img src="./assets/grid-after-question.png" alt="" class="how-to-play__instruction-visual">
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>

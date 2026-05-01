@@ -5,7 +5,7 @@ A trivia game that can be played either solo or with another player. It features
 
 #### HTML
 ##### Landing page
-- [ ] Logo section
+- [x] Logo section
 - [ ] Game select 
 - [ ] Game instructions/summary
 - [ ] Confirm button

@@ -1,9 +1,9 @@
+// ---------- IMPORTS ----------
+import { handleHomeBtnClick } from "./game";
+
 // ---------- DOM VARIABLES ----------
-const startSoloGame = document.getElementById('startSoloGame')
+const homeIcon = document.getElementById('homeIcon');
 // ---------- VARIABLES ----------
 
 // ---------- MAIN PROGRAM ----------
 
-const goToGame = () => {
-    
-}

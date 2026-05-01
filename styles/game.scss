@@ -8,12 +8,9 @@
     box-sizing: border-box;
 }
 
-html{
- height: 100vh;
-}
-
 body{
     @include mixin.page-bg;
+    overflow: visible;
 }
 
 // -------------------- MODAL STYLES --------------------
@@ -35,7 +32,6 @@ body{
         justify-content: space-around;
         align-items: center;
         border-radius: 10px;
-
     }
 
     &__btn-container{
@@ -73,9 +69,39 @@ body{
 
 .logo-section{
     @include mixin.logo-section-styles;
+    justify-content: space-between;
+    text-align: center;
+
+    &__home-btn-wrapper{
+        height: 50%;
+        width: 5%;
+        overflow: hidden;
+        margin-left: 10px;
+        transition: transform 0.2s ease-out;
+
+        &:hover{
+            transform: scale(1.15);
+            cursor: pointer;
+        }
+    }
+
+    &__home-icon{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &__logo-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     &__presents{
-        margin-right: 5px;
+        @include mixin.presents-styles;
+    }
+
+    &__logo{
+        @include mixin.logo-styles;
     }
 }
 
@@ -84,21 +110,21 @@ body{
 .scores{
     width: 80%;
     height: 5%;
-    margin: 0 auto;
+    margin: 30px auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 45px;
+
 
     &__scoreboard{
-        font-size: 1.5rem;
+        font-size: clamp(0.8rem, 4vw, 1.5rem);
         background-color: rgba($color: #f9f9f9, $alpha: 0.3);
         padding: 5px 10px;
         border-radius: 5px;
     }
 
     &__points-this-ques{
-        font-size: 1.5rem;
+        font-size: clamp(0.8rem, 4vw, 1.5rem);
         color: rgb(222, 238, 252);
     }
 }
@@ -106,7 +132,7 @@ body{
 
 // -------------------- GAME AREA STYLES --------------------
 .game-area{
-    height: 80%;
+    height: 70vh;
 
     // ---------- CHOICES GRID STYLES ----------
 
@@ -115,9 +141,9 @@ body{
     }
     
     &__choices-container{
-        opacity: 100%;
+        opacity: 1;
         transition: opacity 0.5s ease-out;
-        transition: 0.5s;
+        // transition-duration: 0.5s;
         display: grid;
         grid-template: repeat(3, 1fr)/repeat(3, 1fr);
         width: 80%;
@@ -136,15 +162,12 @@ body{
             text-align: center;
             background-color: rgba(0, 0, 43, 0.35);
             transition: background-color 0.2s ease-out;
+            padding: 10px 10px;
 
-             &:hover{
+            &:hover{
                 background-color: rgba(61, 1, 104, 0.3);
                 cursor: pointer;
-             }
-
-            //  &:focus{
-            //     background-color: rgba(148, 3, 252, 0.4);
-            //  }
+            }
         }
     }
 

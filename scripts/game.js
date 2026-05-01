@@ -15,13 +15,13 @@ const endModal = document.getElementById('modal')
 const newGameBtn = document.getElementById('newGameBtn');
 const homeBtn = document.getElementById('homeBtn');
 const modalScore = document.getElementById('modalScore');
+const homeIcon = document.getElementById('homeIcon');
 // -------------------- VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
 let currentQuestionIndex //Will hold the index of the selected grid item
 let questionList = []; //Will hold a randomly generated set of questions corresponding to the number of grid items
-let roundCounter = 0;
-
+let roundCounter = 0; //counts how many rounds have been played
 // -------------------- FUNCTIONS -------------------- 
 
 //Generates random list of questions
@@ -57,7 +57,6 @@ const shuffle = qObj => {
     }
     return shuffledAnsArr;
 }
-
 // -------------------- MAIN PROGRAM -------------------- 
 
 // Adds an event listener to each grid item and stores respective ids in a variable to later be used as indices
@@ -81,6 +80,13 @@ gridItems.forEach(item => {
     })
 })
 
+//function to handle clicking home button
+export const handleHomeBtnClick = () => {
+    window.location.replace('../index.html');
+}
+//Adds event listener to home button
+homeIcon.addEventListener('click', handleHomeBtnClick);
+
 //loops through answers and adds event listeners (for appropriate styling when clicked - alternative to focus)
 answerOptions.forEach(option => {
     option.addEventListener('click', e => {
@@ -93,8 +99,6 @@ answerOptions.forEach(option => {
         })
     })
 })
-
-
 
 //Event listener for confirm button in choices section
 confirmChoiceBtn.addEventListener('click', () => {
