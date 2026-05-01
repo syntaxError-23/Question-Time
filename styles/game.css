@@ -159,6 +159,7 @@ body {
   background-color: rgba(0, 0, 43, 0.35);
   transition: background-color 0.2s ease-out;
   padding: 10px 10px;
+  border-radius: 5px;
 }
 .game-area__choices-container__choices-grid-item:hover {
   background-color: rgba(61, 1, 104, 0.3);
