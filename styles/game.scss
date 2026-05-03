@@ -121,15 +121,22 @@ body{
 
 
     &__scoreboard{
-        font-size: clamp(0.8rem, 4vw, 1.5rem);
         background-color: rgba($color: #f9f9f9, $alpha: 0.3);
         padding: 5px 10px;
         border-radius: 5px;
     }
 
     &__points-this-ques{
-        font-size: clamp(0.8rem, 4vw, 1.5rem);
+        
         color: rgb(222, 238, 252);
+    }
+
+    &__scoreboard, &__points-this-ques{
+        font-size: clamp(0.8rem, 4vw, 1.5rem);
+
+        @include mixin.desktop-screen{
+            font-size: clamp(1rem, 3vw, 2.2rem);
+        }
     }
 }
 
@@ -142,12 +149,16 @@ body{
 
     &__choices-area-wrapper{
         @include mixin.section-styles;
+
+        @include mixin.desktop-screen{
+            width: 60%;
+            margin: 0 auto;
+        }
     }
     
     &__choices-container{
         opacity: 1;
         transition: opacity 0.5s ease-out;
-        // transition-duration: 0.5s;
         display: grid;
         grid-template: repeat(3, 1fr)/repeat(3, 1fr);
         width: 80%;
@@ -220,6 +231,8 @@ body{
 
         &__question-container{
             @include mixin.section-styles;
+
+
         }
 
         &__question{
@@ -227,6 +240,10 @@ body{
             border-radius: 5px;
             padding: 25px 40px;
             width: 75%;
+
+            @include mixin.desktop-screen{
+                width: 80%;
+            }
         }
 
         &__question-text{
@@ -242,6 +259,17 @@ body{
             align-items: center;
             height: 50%;
             width: 80%;
+            
+            @include mixin.desktop-screen{
+                display: grid;
+                grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+                row-gap: 10px;
+                column-gap: 10px;
+                width: 90%;
+                height: 20%;
+                justify-items: center;
+            }
+
         
         }
 
@@ -249,11 +277,15 @@ body{
             background-color: rgba($color: #057779, $alpha: 0.3);
             border-radius: 5px;
             padding: 15px 30px;
-            width: 75%;
+            width: 100%;
             color: white;
             text-align: center;
             font-size: 1.2rem;
             transition: background-color 0.25s ease-out;
+
+            @include mixin.desktop-screen{
+                height: 100%;
+            }
 
             &:hover{
                 background-color: rgba($color: #00fbff, $alpha: 0.3);

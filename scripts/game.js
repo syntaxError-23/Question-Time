@@ -82,7 +82,7 @@ gridItems.forEach(item => {
 
 //function to handle clicking home button
 export const handleHomeBtnClick = () => {
-    window.location.replace('/');
+    window.location.replace(new URL('../index.html', import.meta.url).href);
 }
 //Adds event listener to home button
 homeIcon.addEventListener('click', handleHomeBtnClick);
@@ -189,7 +189,7 @@ const reloadGame = () => {
 newGameBtn.addEventListener('click', reloadGame);
 
 homeBtn.addEventListener('click', () => {
-    window.location.replace('/')
+    window.location.replace(new URL('../index.html', import.meta.url).href);
 })
 
 //Event listener for next question button in questions section

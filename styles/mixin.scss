@@ -21,6 +21,12 @@ $lg: 1024px;
     }
 }
 
+@mixin desktop-screen{
+     @media only screen and (min-width:calc($lg + 1px)){
+        @content;
+    }
+}
+
 // ----------- MIXINS - REOCCURRING STYLES ----------
 
 // ----------- BODY ----------
