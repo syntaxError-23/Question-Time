@@ -44,7 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   margin-top: 10px;
   height: 30vh;
 }
@@ -91,7 +91,7 @@ body {
 .how-to-play__intro {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: bold;
-  color: #9368ff;
+  color: #b395ff;
 }
 .how-to-play .key-word {
   font-size: clamp(1.9rem, 7vw, 4.5rem);

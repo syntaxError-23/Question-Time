@@ -85,7 +85,7 @@ body {
   width: 5%;
   overflow: hidden;
   margin-left: 10px;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.1s ease-out;
 }
 .logo-section__home-btn-wrapper:hover {
   transform: scale(1.15);
