@@ -1,5 +1,5 @@
 // -------------------- IMPORTS -------------------- 
-import {logQuestion, questionsObjArr} from './questions.js';
+import {questionsObjArr} from './questions.js';
 // -------------------- DOM VARIABLES -------------------- 
 const gridItems = document.querySelectorAll('.grid-item');
 const confirmChoiceBtn = document.getElementById('confirmChoicebtn');
@@ -16,7 +16,7 @@ const newGameBtn = document.getElementById('newGameBtn');
 const homeBtn = document.getElementById('homeBtn');
 const modalScore = document.getElementById('modalScore');
 const homeIcon = document.getElementById('homeIcon');
-// -------------------- VARIABLES -------------------- 
+// -------------------- PROGRAM VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
 let currentQuestionIndex //Will hold the index of the selected grid item
@@ -41,6 +41,7 @@ const generateQuestionList = (arr, qArr) => {
         }
     }
 }
+
 //calls function to generate random list with object array and empty array as parameters
 generateQuestionList(questionsObjArr, questionList)
 console.log(questionList)
@@ -57,6 +58,22 @@ const shuffle = qObj => {
     }
     return shuffledAnsArr;
 }
+
+const toggleAppearance = (toHide, toDisplay, time) => {
+    toHide.classList.toggle('transparent');
+
+    setTimeout(() => {
+        toHide.classList.toggle('hide');
+        toDisplay.classList.toggle('hide');
+    }, time);
+
+    setTimeout(() => {
+        toDisplay.classList.toggle('transparent')
+    }, time*2);
+    
+}
+
+
 // -------------------- MAIN PROGRAM -------------------- 
 
 // Adds an event listener to each grid item and stores respective ids in a variable to later be used as indices
@@ -102,8 +119,7 @@ answerOptions.forEach(option => {
 
 //Event listener for confirm button in choices section
 confirmChoiceBtn.addEventListener('click', () => {
-    //checks if a question box is selected
-    console.log(currentQuestionIndex)
+    console.log(currentQuestionIndex) //checks if a question box is selected
     if(currentQuestionIndex || currentQuestionIndex === 0){ 
         let currentQuesObj = questionList[currentQuestionIndex]; //variable to store current question object using question box id as an index
         questionText.innerHTML = currentQuesObj.question;
@@ -124,17 +140,13 @@ confirmChoiceBtn.addEventListener('click', () => {
             })
         })
 
-        choicesArea.classList.toggle('hide'); //hides choices grid
-        questionsArea.classList.toggle('hide'); //displays question section
 
+        toggleAppearance(choicesArea, questionsArea, 300);        
         pointsThisQues.textContent = `${currentQuesObj.points} points`; //update points display
-
     }
     else{
         alert('Please select an option'); //alerts user if no question box is selected
     }
-
-    
 })
 
 //Event listener for confirm button in questions section
@@ -152,11 +164,7 @@ confirmAnsBtn.addEventListener('click', () => {
 
         //checks if answer is correct
         if(clickedOption === currentQuesObj.correctAns){
-            console.log('Right Answer!')
             score = score+=currentQuesObj.points //stores points from question
-        }
-        else {
-            console.log('Unlucky. Try again')
         }
 
         //loops through answers to apply style - this is so that every option is styled
@@ -184,7 +192,7 @@ confirmAnsBtn.addEventListener('click', () => {
 })
 
 const reloadGame = () => {
-    window.location.reload()
+    window.location.replace(new URL('../game.html', import.meta.url).href);
 }
 newGameBtn.addEventListener('click', reloadGame);
 
@@ -193,15 +201,11 @@ homeBtn.addEventListener('click', () => {
 })
 
 //Event listener for next question button in questions section
-nextQuesBtn.addEventListener('click', () => {
-    console.log(roundCounter)
-
-    
+nextQuesBtn.addEventListener('click', () => {    
     let currentQuesObj = questionList[currentQuestionIndex] //same as previous event listeners
 
-    choicesArea.classList.toggle('hide'); //shows choices grid
-    questionsArea.classList.toggle('hide'); //hides question
-
+    toggleAppearance(questionsArea, choicesArea, 300);
+    
     nextQuesBtn.classList.toggle('hide'); //hides next question button (for next time question is displayed)
     confirmAnsBtn.classList.toggle('hide') //shows confirm button for answer
 
@@ -218,10 +222,8 @@ nextQuesBtn.addEventListener('click', () => {
     //resets stored values for selected question and selected answer
     currentQuestionIndex = undefined;
     clickedOption = '';
-
     pointsThisQues.textContent = 'SELECT A QUESTION';
-    roundCounter++ //
-    console.log(`Rounds: ${roundCounter}`)
+    roundCounter++ 
 })
 
 

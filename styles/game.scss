@@ -149,6 +149,7 @@ body{
 
     &__choices-area-wrapper{
         @include mixin.section-styles;
+        transition: opacity 0.25s ease-out;
 
         @include mixin.desktop-screen{
             width: 60%;
@@ -157,8 +158,6 @@ body{
     }
     
     &__choices-container{
-        opacity: 1;
-        transition: opacity 0.5s ease-out;
         display: grid;
         grid-template: repeat(3, 1fr)/repeat(3, 1fr);
         width: 80%;
@@ -221,9 +220,7 @@ body{
     // ---------- GAME AREA STYLES ----------
 
     .question-area-wrapper{
-        opacity: 100%;
-        transition: opacity 0.15s ease-out;
-        transition-delay: 0.5s;
+        transition: opacity 0.25s ease-out;
         height: 90%;
         display: flex;
         flex-direction: column;
@@ -231,8 +228,6 @@ body{
 
         &__question-container{
             @include mixin.section-styles;
-
-
         }
 
         &__question{
@@ -297,11 +292,17 @@ body{
 // -------------------- DYNAMICALLY ADDED STYLES --------------------
 .hide{
     display: none;
-    opacity: 0%;
 } 
 
+.transparent{
+    opacity: 0;
+}
+
 .selected-answer{
-    background-color: rgba($color: #00fbff, $alpha: 0.3);
+    background-color: rgba($color: #7cf5f7, $alpha: 0.3);
+    outline: 2px solid rgb(149, 201, 252);
+    // color:#8bc9f0;
+    // font-weight: 700;
 }
 
 .selected-grid-item, .selected-grid-item:hover{
