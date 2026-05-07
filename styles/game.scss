@@ -10,6 +10,7 @@
 
 body{
     @include mixin.page-bg;
+    @include mixin.lato-font;
     overflow: visible;
 }
 
@@ -18,7 +19,7 @@ body{
 .modal{
     width: 100vw;
     height: 100vh;
-    background-color: rgba($color: #000000, $alpha: 0.92);
+    background-color: rgba($color: #000000, $alpha: 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,9 +27,10 @@ body{
     top: 0;
     left: 0;
     overflow: hidden;
+    transition: opacity 0.35s ease-out;
 
     &__content{
-        background-color: rgba($color: #170426, $alpha: 0.4);
+        background-color: rgba($color: #270640, $alpha: 0.8);
         width: 80%;
         height: 40%;
         display: flex;
@@ -55,15 +57,16 @@ body{
 
 
     &__msg{
-        color: rgb(161, 18, 27);
-        font-size: clamp(1.7rem, 7.5vw, 4rem);
+        color: white;
+        font-size: clamp(3rem, 12vw, 8rem);
         font-weight: bold;
+        @include mixin.birthstone-font;
     }
 
     &__score{
-        color: white;
+        color: aliceblue;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
 }
@@ -215,6 +218,14 @@ body{
             @include mixin.btn-hover-styles;
         }
     }
+
+    &__finish-game-btn{
+        @include mixin.btn-styles(rgba($color: #01646704, $alpha: 0.5));
+
+        &:hover{
+            @include mixin.btn-hover-styles(rgba($color: #009fa504, $alpha: 0.8));
+        }
+    }
 }
 
     // ---------- GAME AREA STYLES ----------
@@ -276,14 +287,15 @@ body{
             color: white;
             text-align: center;
             font-size: 1.2rem;
-            transition: background-color 0.25s ease-out;
+            transition: background-color 0.25s ease-out, outline-color 0.3s ease-out;
+            outline: 2px solid rgba(149, 201, 252, 0);
 
             @include mixin.desktop-screen{
                 height: 100%;
             }
 
             &:hover{
-                background-color: rgba($color: #00fbff, $alpha: 0.3);
+                background-color: rgba($color: #04fafe, $alpha: 0.3);
                 cursor: pointer;
             }
         }
@@ -299,10 +311,8 @@ body{
 }
 
 .selected-answer{
-    background-color: rgba($color: #7cf5f7, $alpha: 0.3);
+    background-color: rgba($color: #04fafe, $alpha: 0.3);
     outline: 2px solid rgb(149, 201, 252);
-    // color:#8bc9f0;
-    // font-weight: 700;
 }
 
 .selected-grid-item, .selected-grid-item:hover{

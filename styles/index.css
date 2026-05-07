@@ -16,28 +16,8 @@ body {
   background-position: center;
   background-attachment: fixed;
   overflow: hidden;
+  font-family: "lato", sans-serif;
   overflow: visible;
-}
-
-.logo-section {
-  padding: 17px 0;
-  width: 95%;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px auto;
-  background-color: rgba(0, 0, 0, 0.1);
-  color: white;
-  text-align: center;
-}
-.logo-section__presents {
-  font-size: 0.7rem;
-  margin-right: 10px;
-}
-.logo-section__logo {
-  font-size: clamp(1.2rem, 7vw, 2.5rem);
-  margin-right: 10px;
 }
 
 .game-btns {
@@ -46,7 +26,7 @@ body {
   align-items: center;
   margin-bottom: 60px;
   margin-top: 10px;
-  height: 30vh;
+  height: 35vh;
 }
 .game-btns__scroll-guidance {
   margin-right: 15px;
@@ -61,6 +41,8 @@ body {
   border-radius: 5px;
   transition: background-color 0.2s;
   background-color: rgba(1, 103, 45, 0.5);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-size: 1.7rem;
   font-weight: bold;
 }
@@ -101,18 +83,17 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(83, 2, 188, 0.3);
   width: 95%;
   padding: 20px 10px;
   border-radius: 4px;
 }
 .how-to-play__instruction-heading {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  margin-bottom: 30px;
 }
 .how-to-play__quick-note {
   margin-bottom: 30px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 .how-to-play__instruction-cards-wrapper {
   display: flex;
@@ -120,7 +101,7 @@ body {
   align-items: center;
 }
 .how-to-play__instruction-card {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;

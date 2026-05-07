@@ -15,22 +15,10 @@ html{
 
 body{
     @include mixin.page-bg;
+    @include mixin.lato-font;
     overflow: visible;
 }
 
-// ---------- LOGO SECTION STYLES ----------
-.logo-section{
-    @include mixin.logo-section-styles;
-    text-align: center;
-    
-    &__presents{
-        @include mixin.presents-styles
-    }
-
-    &__logo{
-        @include mixin.logo-styles
-    }
-}
 // ----- START BUTTON -----
 
 .game-btns{
@@ -39,7 +27,7 @@ body{
     align-items: center;
     margin-bottom: 60px;
     margin-top: 10px;
-    height: 30vh;
+    height: 35vh;
 
     &__scroll-guidance{
         margin-right: 15px;
@@ -92,26 +80,26 @@ body{
         font-size: clamp(1.9rem, 7vw, 4.5rem)
     }
 
-    // ----- INSTRUCTIONS DIV -----
+    // ----- INSTRUCTIONS STYLES -----
     &__instructions{
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        background-color: rgba($color: #5302bc, $alpha: 0.3);
+        // background-color: rgba($color: #5302bc, $alpha: 0.3);
         width: 95%;
         padding: 20px 10px;
         border-radius: 4px;
     }
 
     &__instruction-heading{
-        font-size: 1.8rem;
-        margin-bottom: 10px;
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        margin-bottom: 30px;
     }
 
     &__quick-note{
         margin-bottom: 30px;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
 
     &__instruction-cards-wrapper{
@@ -121,7 +109,7 @@ body{
     }
 
     &__instruction-card{
-        background-color: rgba($color: #000000, $alpha: 0.2);
+        background-color: rgba($color: #000000, $alpha: 0.4);
         display: flex;
         flex-direction: column-reverse;
         justify-content: space-between;

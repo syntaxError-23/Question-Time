@@ -16,27 +16,53 @@ const newGameBtn = document.getElementById('newGameBtn');
 const homeBtn = document.getElementById('homeBtn');
 const modalScore = document.getElementById('modalScore');
 const homeIcon = document.getElementById('homeIcon');
+const finishGameBtn = document.getElementById('finishGameBtn');
 // -------------------- PROGRAM VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
 let currentQuestionIndex //Will hold the index of the selected grid item
 let questionList = []; //Will hold a randomly generated set of questions corresponding to the number of grid items
 let roundCounter = 0; //counts how many rounds have been played
-// -------------------- FUNCTIONS -------------------- 
+
+// -------------------- UTILITY FUNCTIONS -------------------- 
 
 //Generates random list of questions
 const generateQuestionList = (arr, qArr) => {
 
+    let noOfEasyQs = 0;
+    let noOfMedQs = 0;
+    let noOfHardQs = 0;
+
+    arr.forEach(question => {
+        if(question.points === 100){
+            noOfEasyQs+=1;
+            
+        }
+        else if(question.points === 200){
+            noOfMedQs+=1;
+        }
+        else if(question.points === 300){
+            noOfHardQs+=1;
+        }
+
+    })
+
+    console.log(`Easy questions: ${noOfEasyQs}`);
+    console.log(`Medium questions: ${noOfMedQs}`);
+    console.log(`Hard questions: ${noOfHardQs}`);
+
+
+
     for(let i=0; i<3; i++){
         for(let j=0; j<3; j++){
             if(i === 0){
-                qArr.push(arr[Math.floor(Math.random()*26)])
+                qArr.push(arr[Math.floor(Math.random()*noOfEasyQs)])
             }
             else if(i === 1){
-                qArr.push(arr[Math.floor(Math.random()*38) + 26])
+                qArr.push(arr[Math.floor(Math.random()*noOfMedQs) + noOfEasyQs])
             }
             else if(i === 2){
-                qArr.push(arr[Math.floor(Math.random()*35) + 64])
+                qArr.push(arr[Math.floor(Math.random()*noOfHardQs) + noOfEasyQs + noOfMedQs])
             }
         }
     }
@@ -70,16 +96,38 @@ const toggleAppearance = (toHide, toDisplay, time) => {
     setTimeout(() => {
         toDisplay.classList.toggle('transparent')
     }, time*2);
-    
 }
 
+const quickToggle = (el, prop) => {
+    el.classlist.toggle(prop)
+}
 
-// -------------------- MAIN PROGRAM -------------------- 
+// -------------------- EVENT HANDLER FUNCTIONS -------------------- 
 
 // Adds an event listener to each grid item and stores respective ids in a variable to later be used as indices
 const handleGridClick = e =>{
        currentQuestionIndex = parseInt(e.target.id)-1;
-    }
+}
+
+const handleFinGameBtn = () => {
+    roundCounter = 0;
+    endModal.classList.toggle('hide');
+        
+    setTimeout(() => {
+        endModal.classList.toggle('transparent')
+    }, 200);
+
+    
+
+    modalScore.textContent = `You scored ${score} points`;
+}
+
+//function to handle clicking home button
+const handleHomeBtnClick = () => {
+    window.location.replace(new URL('../index.html', import.meta.url).href);
+}
+
+// -------------------- MAIN PROGRAM -------------------- 
 
 gridItems.forEach(item => {
     item.addEventListener('click', handleGridClick)
@@ -97,10 +145,6 @@ gridItems.forEach(item => {
     })
 })
 
-//function to handle clicking home button
-export const handleHomeBtnClick = () => {
-    window.location.replace(new URL('../index.html', import.meta.url).href);
-}
 //Adds event listener to home button
 homeIcon.addEventListener('click', handleHomeBtnClick);
 
@@ -116,6 +160,8 @@ answerOptions.forEach(option => {
         })
     })
 })
+
+finishGameBtn.addEventListener('click', handleFinGameBtn);
 
 //Event listener for confirm button in choices section
 confirmChoiceBtn.addEventListener('click', () => {
@@ -149,14 +195,10 @@ confirmChoiceBtn.addEventListener('click', () => {
     }
 })
 
+
+
 //Event listener for confirm button in questions section
 confirmAnsBtn.addEventListener('click', () => {
-    
-    if(roundCounter === 4){
-        roundCounter = 0;
-        endModal.classList.toggle('hide');
-        modalScore.textContent = `You scored ${score} points`;
-    }
     
     //checks if an option has been selected 
     if(clickedOption){
@@ -179,10 +221,19 @@ confirmAnsBtn.addEventListener('click', () => {
 
         //Update scores
         scoreboard.textContent = `SCORE: ${score}`;
-        
-        confirmAnsBtn.classList.toggle('hide') //hides confirm button
-        nextQuesBtn.classList.toggle('hide') //displays next question button
 
+        roundCounter++
+
+        if(roundCounter === 5){
+            confirmAnsBtn.classList.toggle('hide') //hides confirm button
+            finishGameBtn.classList.toggle('hide'); // Displays finish game button
+            console.log('triggered')
+        }
+        else{
+             confirmAnsBtn.classList.toggle('hide') //hides confirm button
+            nextQuesBtn.classList.toggle('hide') //displays next question button
+        }
+    
         gridItems[currentQuestionIndex].classList.add('completed');
         gridItems[currentQuestionIndex].removeEventListener('click', handleGridClick);
     }    
@@ -223,7 +274,6 @@ nextQuesBtn.addEventListener('click', () => {
     currentQuestionIndex = undefined;
     clickedOption = '';
     pointsThisQues.textContent = 'SELECT A QUESTION';
-    roundCounter++ 
 })
 
 

@@ -1,5 +1,6 @@
 // -------------------- VARIABLES --------------------
-
+$birthstone: 'Birthstone', cursive;
+$lato: 'lato', sans-serif;
 //---------- SCREEN SIZE VARIABLES ----------
 $sm: 640px;
 $md: 768px;
@@ -13,14 +14,6 @@ $lg: 1024px;
     }
 }
 
-
-@mixin lg-screen{
-     @media only screen and (min-width:calc($md + 1px))
-     {
-        @content;
-    }
-}
-
 @mixin desktop-screen{
      @media only screen and (min-width:calc($lg + 1px)){
         @content;
@@ -29,7 +22,14 @@ $lg: 1024px;
 
 // ----------- MIXINS - REOCCURRING STYLES ----------
 
-// ----------- BODY ----------
+@mixin birthstone-font{
+    font-family: $birthstone;
+} 
+
+@mixin lato-font{
+    font-family: $lato;
+}
+
 @mixin page-bg{
     min-height: 100%;
     background-image: url('../assets/mesh-bg-3.png');
@@ -48,6 +48,8 @@ $lg: 1024px;
     border-radius: 5px;
     transition: background-color 0.2s;
     background-color: $btn-bg;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
 }
 
 @mixin btn-hover-styles($btn-hover-bg: rgba($color: #028b3d04, $alpha: 0.8)){

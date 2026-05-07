@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Time</title>
+    <!-- Birthstone AND Lato fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/game.css">
 </head>
 <body>
 
-    <div class="modal hide" id="modal">
+    <div class="modal hide transparent" id="modal">
         <div class="modal__content">
             <div class="modal__text">
-                <p class="modal__msg" id="modalMsg">THAT'S ALL FOLKS</p>
+                <p class="modal__msg" id="modalMsg">That's All Folks</p>
                 <p class="modal__score" id="modalScore"></p>
             </div>
 
@@ -79,6 +83,7 @@
                 <div class="game-area__btns-container">
                     <button id="confirmAnsBtn" class="game-area__confirm-ans-btn">CONFIRM</button>
                     <button class="game-area__next-ques-btn hide" id="nextQuesBtn">NEXT QUESTION</button>
+                    <button class="game-area__finish-game-btn hide" id="finishGameBtn">FINISH GAME</button>
                 </div>
 
             </div>
