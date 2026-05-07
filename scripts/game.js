@@ -28,12 +28,14 @@ let roundCounter = 0; //counts how many rounds have been played
 
 //Generates random list of questions
 const generateQuestionList = (arr, qArr) => {
+    let arrCopy = [...arr]
+
 
     let noOfEasyQs = 0;
     let noOfMedQs = 0;
     let noOfHardQs = 0;
 
-    arr.forEach(question => {
+    arrCopy.forEach(question => {
         if(question.points === 100){
             noOfEasyQs+=1;
             
@@ -47,30 +49,37 @@ const generateQuestionList = (arr, qArr) => {
 
     })
 
-    console.log(`Easy questions: ${noOfEasyQs}`);
-    console.log(`Medium questions: ${noOfMedQs}`);
-    console.log(`Hard questions: ${noOfHardQs}`);
-
-
-
     for(let i=0; i<3; i++){
         for(let j=0; j<3; j++){
             if(i === 0){
-                qArr.push(arr[Math.floor(Math.random()*noOfEasyQs)])
+                let randomIndex = Math.floor(Math.random()*noOfEasyQs)
+                let randomQ = arrCopy[randomIndex]
+                arrCopy.splice(randomIndex, 1);
+                qArr.push(randomQ);
+                noOfEasyQs--
+                console.log(randomQ)
             }
             else if(i === 1){
-                qArr.push(arr[Math.floor(Math.random()*noOfMedQs) + noOfEasyQs])
+                let randomIndex = Math.floor(Math.random()*noOfMedQs) + noOfEasyQs;
+                let randomQ = arrCopy[randomIndex];
+                qArr.push(randomQ);
+                arrCopy.splice(randomIndex, 1);
+                noOfMedQs--
+                console.log(randomQ)
             }
             else if(i === 2){
-                qArr.push(arr[Math.floor(Math.random()*noOfHardQs) + noOfEasyQs + noOfMedQs])
+                let randomIndex = Math.floor(Math.random()*noOfHardQs) + noOfEasyQs + noOfMedQs;
+                let randomQ = arrCopy[randomIndex];
+                qArr.push(randomQ);
+                arrCopy.splice(randomIndex, 1);
+                noOfHardQs--
+                console.log(randomQ)
             }
         }
+
+            console.log(arrCopy)
     }
 }
-
-//calls function to generate random list with object array and empty array as parameters
-generateQuestionList(questionsObjArr, questionList)
-console.log(questionList)
 
 //Randomises the possible answers of a question and puts them in an array
 const shuffle = qObj => {
@@ -117,8 +126,6 @@ const handleFinGameBtn = () => {
         endModal.classList.toggle('transparent')
     }, 200);
 
-    
-
     modalScore.textContent = `You scored ${score} points`;
 }
 
@@ -127,7 +134,20 @@ const handleHomeBtnClick = () => {
     window.location.replace(new URL('../index.html', import.meta.url).href);
 }
 
+//function to restart game
+const restartGame = () => {
+    window.location.replace(new URL('../game.html', import.meta.url).href);
+}
+
 // -------------------- MAIN PROGRAM -------------------- 
+
+//calls function to generate random list with object array and empty array as parameters
+generateQuestionList(questionsObjArr, questionList);
+console.log(questionList);
+
+newGameBtn.addEventListener('click', restartGame);
+
+homeBtn.addEventListener('click', handleHomeBtnClick);
 
 gridItems.forEach(item => {
     item.addEventListener('click', handleGridClick)
@@ -186,7 +206,6 @@ confirmChoiceBtn.addEventListener('click', () => {
             })
         })
 
-
         toggleAppearance(choicesArea, questionsArea, 300);        
         pointsThisQues.textContent = `${currentQuesObj.points} points`; //update points display
     }
@@ -194,8 +213,6 @@ confirmChoiceBtn.addEventListener('click', () => {
         alert('Please select an option'); //alerts user if no question box is selected
     }
 })
-
-
 
 //Event listener for confirm button in questions section
 confirmAnsBtn.addEventListener('click', () => {
@@ -217,12 +234,12 @@ confirmAnsBtn.addEventListener('click', () => {
             else{
                 option.classList.add('incorrect-answer')
             }
+
+            option.classList.add('locked')
         })
 
-        //Update scores
-        scoreboard.textContent = `SCORE: ${score}`;
-
-        roundCounter++
+        scoreboard.textContent = `SCORE: ${score}`; //Update scores
+        roundCounter++ //Increment the round 
 
         if(roundCounter === 5){
             confirmAnsBtn.classList.toggle('hide') //hides confirm button
@@ -242,26 +259,20 @@ confirmAnsBtn.addEventListener('click', () => {
     }
 })
 
-const reloadGame = () => {
-    window.location.replace(new URL('../game.html', import.meta.url).href);
-}
-newGameBtn.addEventListener('click', reloadGame);
-
-homeBtn.addEventListener('click', () => {
-    window.location.replace(new URL('../index.html', import.meta.url).href);
-})
-
 //Event listener for next question button in questions section
 nextQuesBtn.addEventListener('click', () => {    
     let currentQuesObj = questionList[currentQuestionIndex] //same as previous event listeners
-
     toggleAppearance(questionsArea, choicesArea, 300);
-    
     nextQuesBtn.classList.toggle('hide'); //hides next question button (for next time question is displayed)
-    confirmAnsBtn.classList.toggle('hide') //shows confirm button for answer
-
+    
+    //timeout stops confirm answer button reappearing too quickly
+    setTimeout(() => {
+        confirmAnsBtn.classList.toggle('hide') //shows confirm button for answer
+    },300)
+    
     //loops through answers to remove classes that change bg colour depending on whether or not answer is correct
     answerOptions.forEach(option => {
+            option.classList.remove('locked')
             if(option.textContent === currentQuesObj.correctAns){
                 option.classList.remove('correct-answer')
             }

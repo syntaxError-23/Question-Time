@@ -110,7 +110,7 @@ body {
   margin-right: 10px;
 }
 .logo-section__logo {
-  font-size: clamp(1.2rem, 7vw, 2.5rem);
+  font-size: clamp(2.1rem, 8vw, 3.5rem);
   margin-right: 10px;
 }
 
@@ -348,4 +348,8 @@ body {
   background-color: rgba(45, 44, 44, 0.4);
   cursor: default;
   text-decoration: line-through;
+}
+
+.locked {
+  pointer-events: none;
 }

@@ -68,9 +68,7 @@ body{
         text-align: center;
         font-size: 1.3rem;
     }
-    
 }
-
 
 // -------------------- LOGO SECTION STYLES --------------------
 
@@ -333,4 +331,8 @@ body{
     background-color: rgba($color: #2d2c2c, $alpha: 0.4);
     cursor: default;
     text-decoration: line-through;
+}
+
+.locked{
+    pointer-events: none;
 }
