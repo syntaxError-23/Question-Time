@@ -54,7 +54,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 103, 45, 0.5);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 .modal__new-game-btn:hover, .modal__home-btn:hover {
   background-color: rgba(2, 139, 61, 0.8);
@@ -121,6 +121,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  transition: opacity 0.5s ease-out;
 }
 .scores__scoreboard {
   background-color: rgba(249, 249, 249, 0.3);
@@ -190,7 +191,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 103, 45, 0.5);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 .game-area__confirm-btn:hover {
   background-color: rgba(2, 139, 61, 0.8);
@@ -210,7 +211,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 77, 112, 0.4);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 .game-area__next-ques-btn:hover {
   background-color: rgba(2, 156, 227, 0.4);
@@ -225,7 +226,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 103, 45, 0.5);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 .game-area__confirm-ans-btn:hover {
   background-color: rgba(2, 139, 61, 0.8);
@@ -240,7 +241,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 100, 103, 0.5);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 .game-area__finish-game-btn:hover {
   background-color: rgba(0, 159, 165, 0.8);
@@ -248,7 +249,7 @@ body {
 }
 
 .question-area-wrapper {
-  transition: opacity 0.25s ease-out;
+  transition: opacity 0.15s ease-out;
   height: 90%;
   display: flex;
   flex-direction: column;

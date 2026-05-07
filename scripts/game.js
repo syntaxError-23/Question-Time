@@ -17,6 +17,7 @@ const homeBtn = document.getElementById('homeBtn');
 const modalScore = document.getElementById('modalScore');
 const homeIcon = document.getElementById('homeIcon');
 const finishGameBtn = document.getElementById('finishGameBtn');
+const scoresSection = document.getElementById('scores');
 // -------------------- PROGRAM VARIABLES -------------------- 
 let score = 0; //stores user score
 let clickedOption = ''; //option (out of the possible answers) clicked by the user
@@ -29,8 +30,6 @@ let roundCounter = 0; //counts how many rounds have been played
 //Generates random list of questions
 const generateQuestionList = (arr, qArr) => {
     let arrCopy = [...arr]
-
-
     let noOfEasyQs = 0;
     let noOfMedQs = 0;
     let noOfHardQs = 0;
@@ -38,7 +37,6 @@ const generateQuestionList = (arr, qArr) => {
     arrCopy.forEach(question => {
         if(question.points === 100){
             noOfEasyQs+=1;
-            
         }
         else if(question.points === 200){
             noOfMedQs+=1;
@@ -46,7 +44,6 @@ const generateQuestionList = (arr, qArr) => {
         else if(question.points === 300){
             noOfHardQs+=1;
         }
-
     })
 
     for(let i=0; i<3; i++){
@@ -57,7 +54,6 @@ const generateQuestionList = (arr, qArr) => {
                 arrCopy.splice(randomIndex, 1);
                 qArr.push(randomQ);
                 noOfEasyQs--
-                console.log(randomQ)
             }
             else if(i === 1){
                 let randomIndex = Math.floor(Math.random()*noOfMedQs) + noOfEasyQs;
@@ -65,7 +61,6 @@ const generateQuestionList = (arr, qArr) => {
                 qArr.push(randomQ);
                 arrCopy.splice(randomIndex, 1);
                 noOfMedQs--
-                console.log(randomQ)
             }
             else if(i === 2){
                 let randomIndex = Math.floor(Math.random()*noOfHardQs) + noOfEasyQs + noOfMedQs;
@@ -73,11 +68,8 @@ const generateQuestionList = (arr, qArr) => {
                 qArr.push(randomQ);
                 arrCopy.splice(randomIndex, 1);
                 noOfHardQs--
-                console.log(randomQ)
             }
         }
-
-            console.log(arrCopy)
     }
 }
 
@@ -94,6 +86,7 @@ const shuffle = qObj => {
     return shuffledAnsArr;
 }
 
+//toggles opacity and display of sections
 const toggleAppearance = (toHide, toDisplay, time) => {
     toHide.classList.toggle('transparent');
 
@@ -107,10 +100,14 @@ const toggleAppearance = (toHide, toDisplay, time) => {
     }, time*2);
 }
 
-const quickToggle = (el, prop) => {
-    el.classlist.toggle(prop)
-}
+const flicker = (el, prop) => {
 
+    el.classList.toggle(prop);
+
+    setTimeout(() => {
+        el.classList.toggle(prop);
+    }, 400);
+}
 // -------------------- EVENT HANDLER FUNCTIONS -------------------- 
 
 // Adds an event listener to each grid item and stores respective ids in a variable to later be used as indices
@@ -118,6 +115,7 @@ const handleGridClick = e =>{
        currentQuestionIndex = parseInt(e.target.id)-1;
 }
 
+//Shows Modal when finish game button is clicked
 const handleFinGameBtn = () => {
     roundCounter = 0;
     endModal.classList.toggle('hide');
@@ -143,11 +141,10 @@ const restartGame = () => {
 
 //calls function to generate random list with object array and empty array as parameters
 generateQuestionList(questionsObjArr, questionList);
-console.log(questionList);
-
-newGameBtn.addEventListener('click', restartGame);
-
+newGameBtn.addEventListener('click', restartGame); 
 homeBtn.addEventListener('click', handleHomeBtnClick);
+homeIcon.addEventListener('click', handleHomeBtnClick);
+finishGameBtn.addEventListener('click', handleFinGameBtn);
 
 gridItems.forEach(item => {
     item.addEventListener('click', handleGridClick)
@@ -165,9 +162,6 @@ gridItems.forEach(item => {
     })
 })
 
-//Adds event listener to home button
-homeIcon.addEventListener('click', handleHomeBtnClick);
-
 //loops through answers and adds event listeners (for appropriate styling when clicked - alternative to focus)
 answerOptions.forEach(option => {
     option.addEventListener('click', e => {
@@ -180,8 +174,6 @@ answerOptions.forEach(option => {
         })
     })
 })
-
-finishGameBtn.addEventListener('click', handleFinGameBtn);
 
 //Event listener for confirm button in choices section
 confirmChoiceBtn.addEventListener('click', () => {
@@ -206,8 +198,15 @@ confirmChoiceBtn.addEventListener('click', () => {
             })
         })
 
+        flicker(scoresSection, 'transparent');
         toggleAppearance(choicesArea, questionsArea, 300);        
-        pointsThisQues.textContent = `${currentQuesObj.points} points`; //update points display
+        
+        setTimeout(() => {
+            pointsThisQues.textContent = `${currentQuesObj.points} points`; //update points display
+        }, 350)
+        
+
+        
     }
     else{
         alert('Please select an option'); //alerts user if no question box is selected
@@ -269,6 +268,8 @@ nextQuesBtn.addEventListener('click', () => {
     setTimeout(() => {
         confirmAnsBtn.classList.toggle('hide') //shows confirm button for answer
     },300)
+
+    flicker(scoresSection, 'transparent');
     
     //loops through answers to remove classes that change bg colour depending on whether or not answer is correct
     answerOptions.forEach(option => {
@@ -284,7 +285,11 @@ nextQuesBtn.addEventListener('click', () => {
     //resets stored values for selected question and selected answer
     currentQuestionIndex = undefined;
     clickedOption = '';
-    pointsThisQues.textContent = 'SELECT A QUESTION';
+
+    setTimeout(() => {
+        pointsThisQues.textContent = 'SELECT A QUESTION';
+    }, 350)
+    
 })
 
 

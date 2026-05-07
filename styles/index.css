@@ -42,7 +42,7 @@ body {
   transition: background-color 0.2s;
   background-color: rgba(1, 103, 45, 0.5);
   font-weight: 600;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
   font-size: 1.7rem;
   font-weight: bold;
 }
