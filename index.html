@@ -11,62 +11,66 @@
     <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-
-    <main class="how-to-play">
-
+    <main class="how-to-play" id="topOfPage">
         <!-- ---------- WELCOME ---------- -->
-        <div class="how-to-play__welcome-container">
+        <article class="how-to-play__welcome-container">
             <h2 class="how-to-play__welcome-heading">WELCOME TO <span class="key-word">QUESTION TIME</span></h2>
             <p class="how-to-play__intro">TEST YOUR TRIVIA</p>
-        </div>
+        </article>
 
-        <div class="game-btns">
-            <p class="game-btns__scroll-guidance">Scroll down for instructions or</p>
-            <a href="./game.html" class="start-solo-game" id="startSoloGame">START GAME</a>
-        </div>
+        <article class="game-btns">
+            <a href="#instructions" class="how-to-play__instructions-btn">GAME GUIDE</a>
+            <a href="#gameModeSelect" class="how-to-play__game-select" id="startSoloGame">GAME SELECT</a>
+        </article>
 
+        <!-- ---------- GAME MODE SELECT ---------- -->
+        <section class="how-to-play__game-mode-select" id="gameModeSelect">
+            <article class="how-to-play__mode-container infinite-mode-container">
+                <p class="how-to-play__infinity-mode-text">&infin; <br> (COMING SOON)</p>
+            </article>
+            <article class="how-to-play__mode-container" id="quickRoundDiv">
+                <p class="how-to-play__quick-round-text">QUICK ROUND</p>
+            </article>
+        </section>
         <!-- ---------- INSTRUCTIONS ---------- -->
-        <section class="how-to-play__instructions">
+        <section class="how-to-play__instructions" id="instructions">
             <h3 class="how-to-play__instruction-heading">HOW TO PLAY</h3>
+            <h4 class="how-to-play__quick-round-heading">QUICK ROUND</h4>
             <p class="how-to-play__quick-note">Each game runs for 5 rounds. Each round is as follows</p>
             
             <!-- ---------- INSTRUCTION CARDS ---------- -->
             <div class="how-to-play__instruction-cards-wrapper">
             <!-- ----- CARD 1 ----- -->
-                <div class="how-to-play__instruction-card">
+                <article class="how-to-play__instruction-card">
                     <p class="how-to-play__instruction-text"> select a box and click the confirm button below</p>
                     <div class="how-to-play__instuction-visual-container">
                         <img src="./assets/game-guidance1.png" alt="" class="how-to-play__instruction-visual">
                     </div>
-                </div>
+                </article>
             <!-- ----- CARD 2 ----- -->
-                <div class="how-to-play__instruction-card">
+                <article class="how-to-play__instruction-card">
                     <p class="how-to-play__instruction-text">Select your desired answer and lock it in with the confirm button</p>
                     <div class="how-to-play__instuction-visual-container">
                         <img src="./assets/game-guidance2.png" alt="" class="how-to-play__instruction-visual">
                     </div>
-                </div>
+                </article>
             <!-- ----- CARD 3 ----- -->
-                <div class="how-to-play__instruction-card">
+                <article class="how-to-play__instruction-card">
                     <p class="how-to-play__instruction-text">Once you're ready for the next question, click the next question button</p>
                     <div class="how-to-play__instuction-visual-container">
                         <img src="./assets/game-guidance3.png" alt="" class="how-to-play__instruction-visual">
                     </div>
-                </div>
+                </article>
             <!-- ----- CARD 4 ----- -->
-                <div class="how-to-play__instruction-card">
+                <article class="how-to-play__instruction-card">
                     <p class="how-to-play__instruction-text">You will be returned to the grid and can select your next question</p>
                     <div class="how-to-play__instuction-visual-container">
                         <img src="./assets/game-guidance4.png" alt="" class="how-to-play__instruction-visual">
                     </div>
-                </div>
+                </article>
             </div>
         </section>
-
     </main>
-
-
-
 </body>
-<script src="./scripts/index.js"></script>
+<script type="module" src="./scripts/index.js"></script>
 </html>

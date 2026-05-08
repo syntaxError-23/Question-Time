@@ -6,6 +6,7 @@
 
 html {
   height: 100vh;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,18 +23,42 @@ body {
 
 .game-btns {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 60px;
   margin-top: 10px;
   height: 35vh;
+  width: 70%;
 }
 .game-btns__scroll-guidance {
   margin-right: 15px;
   font-size: clamp(1rem, 3vw, 1.5rem);
 }
 
-.start-solo-game {
+.how-to-play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: aliceblue;
+}
+.how-to-play__instructions-btn {
+  padding: 12px 15px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  background-color: rgba(35, 32, 170, 0.5);
+  font-weight: 600;
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
+  font-weight: bold;
+}
+.how-to-play__instructions-btn:hover {
+  background-color: rgba(49, 46, 236, 0.5);
+  cursor: pointer;
+}
+.how-to-play__game-select {
   padding: 12px 15px;
   text-decoration: none;
   color: white;
@@ -43,21 +68,11 @@ body {
   background-color: rgba(1, 103, 45, 0.5);
   font-weight: 600;
   font-size: clamp(0.8rem, 3vw, 1.8rem);
-  font-size: 1.7rem;
   font-weight: bold;
 }
-.start-solo-game:hover {
+.how-to-play__game-select:hover {
   background-color: rgba(2, 139, 61, 0.8);
   cursor: pointer;
-}
-
-.how-to-play {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  color: aliceblue;
 }
 .how-to-play__welcome-container {
   margin-top: 50px;
@@ -68,15 +83,58 @@ body {
   justify-content: center;
 }
 .how-to-play__welcome-heading {
-  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-size: clamp(0.7rem, 3vw, 1.8rem);
 }
 .how-to-play__intro {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(0.7rem, 3vw, 1.5rem);
+  color: #93ffff;
   font-weight: bold;
-  color: #b395ff;
+  text-shadow: 0px 0px 16px #ffffff;
 }
 .how-to-play .key-word {
   font-size: clamp(1.9rem, 7vw, 4.5rem);
+}
+.how-to-play__game-mode-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(14, 48, 30, 0.3);
+  border-radius: 5px;
+}
+@media only screen and (min-width: 769px) {
+  .how-to-play__game-mode-select {
+    flex-direction: row;
+  }
+}
+.how-to-play__mode-container {
+  width: 95%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in, background-color 0.3s ease-out;
+}
+@media only screen and (min-width: 769px) {
+  .how-to-play__mode-container {
+    width: 45%;
+    height: 60%;
+  }
+}
+.how-to-play__mode-container:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+  background-color: rgba(34, 0, 62, 0.8);
+}
+.how-to-play__mode-container:active {
+  background-color: rgba(160, 15, 218, 0.6);
+}
+.how-to-play__quick-round-text, .how-to-play__infinity-mode-text {
+  font-size: clamp(1.5rem, 8vw, 4rem);
 }
 .how-to-play__instructions {
   display: flex;
@@ -91,6 +149,10 @@ body {
   font-size: clamp(2.5rem, 7vw, 5rem);
   margin-bottom: 30px;
 }
+.how-to-play__quick-round-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 10px;
+}
 .how-to-play__quick-note {
   margin-bottom: 30px;
   font-size: 1.6rem;
@@ -99,6 +161,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media only screen and (min-width: 1025px) {
+  .how-to-play__instruction-cards-wrapper {
+    display: grid;
+    grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+    width: 90%;
+  }
 }
 .how-to-play__instruction-card {
   background-color: rgba(0, 0, 0, 0.4);
@@ -111,6 +182,12 @@ body {
   margin-bottom: 20px;
   padding: 25px 15px;
   border-radius: 5px;
+}
+@media only screen and (min-width: 1025px) {
+  .how-to-play__instruction-card {
+    height: 100%;
+    width: 100%;
+  }
 }
 .how-to-play__instruction-text {
   font-size: 1.4rem;

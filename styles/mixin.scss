@@ -14,6 +14,12 @@ $lg: 1024px;
     }
 }
 
+@mixin med-and-larger-screens{
+    @media only screen and (min-width:calc($md + 1px)){
+        @content;
+    }
+}
+
 @mixin desktop-screen{
      @media only screen and (min-width:calc($lg + 1px)){
         @content;
