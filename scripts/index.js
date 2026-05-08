@@ -1,11 +1,18 @@
 // --------------- DOM VARIABLES ---------------
 const quickRoundSelect = document.getElementById('quickRoundDiv');
-
+const infiniteSelect = document.getElementById('infiniteMode')
 // --------------- EVENT HANDLER FUNCTIONS ---------------
-
-const handleQuickRoundClick = () => {
-    window.location.replace(new URL('../game.html', import.meta.url).href);
-    console.log('clicked')
+const handleQuickRoundSelect = () => {
+    window.location.href = 'game.html?mode=quickround'
 }
 
-quickRoundSelect.addEventListener('click', handleQuickRoundClick)
+const handleInfiniteSelect = () => {
+     window.location.href = 'game.html?mode=infinite'
+}
+// --------------- PROGRAM ---------------
+quickRoundSelect.addEventListener('click', handleQuickRoundSelect)
+infiniteSelect.addEventListener('click', handleInfiniteSelect)
+
+
+
+
